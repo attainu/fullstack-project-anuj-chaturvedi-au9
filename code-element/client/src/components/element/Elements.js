@@ -6,8 +6,6 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
 import ElementContext from "../../context/element/elementContext";
-import clearSelected from "../../utils/clearSelected";
-import downloadAllCode from "../../utils/downloadAllCode";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Element = ({uncheckBox}) => {
+const Element = () => {
   const classes = useStyles();
 
   const elementContext = useContext(ElementContext);
@@ -29,9 +27,8 @@ const Element = ({uncheckBox}) => {
   useEffect(() => {
     if(elements === null){
       getElements();
-    };
-    clearSelected();
-
+    }
+    
   }, []);
 
   if (elements === null) {
@@ -40,7 +37,7 @@ const Element = ({uncheckBox}) => {
   return (
     <Fragment>
     <Container maxWidth='lg'>
-
+      
       <div className={classes.root}>
         {filtered === null
           ? elements.map((element) => (
@@ -49,10 +46,8 @@ const Element = ({uncheckBox}) => {
               HTMLCode={element.HTMLCode}
               CSSCode={element.CSSCode}
               name={element.name}
-              img={element.screenshot.data}
+              // img={element.screenshot.data}
               key={element._id}
-              id={element._id}
-              clearCheckBox={uncheckBox}
             />
           )):  filtered.map((element) => (
               <ElementItem
@@ -60,9 +55,8 @@ const Element = ({uncheckBox}) => {
               HTMLCode={element.HTMLCode}
               CSSCode={element.CSSCode}
                 name={element.name}
-                img={element.screenshot.data}
+                // img={element.screenshot.data}
                 key={element._id}
-                id={element._id}
               />
             ))}
       </div>

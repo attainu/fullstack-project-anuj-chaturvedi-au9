@@ -5,10 +5,17 @@ import Home from "./components/pages/Home";
 import Team from "./components/pages/Team";
 import Elements from "./components/pages/Elements";
 import Contribute from "./components/pages/Contribute";
-import "./App.css";
+import Login from "./components/pages/Login";
+import LogOut from "./components/pages/logout";
+
+
+import ElementState from './context/element/elementState';
+// import "./App.css";
+
 
 function App() {
   return (
+    <ElementState>
     <Router>
       <Switch>
         <Route exact path='/elements'>
@@ -23,10 +30,17 @@ function App() {
           <Team />
         </Route>
         <Route exact path='/'>
-        <Home />
+        <Login />
         </Route>
+          <Route exact path='/home'>
+            <Home />
+          </Route>
+          <Route exact path='/logout'>
+            <LogOut />
+          </Route>
       </Switch>
     </Router>
+    </ElementState>
   );
 }
 

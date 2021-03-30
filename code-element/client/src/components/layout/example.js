@@ -5,9 +5,6 @@ import '../../App.css'
 import Paper from '@material-ui/core/Paper';
 import { Container } from '@material-ui/core';
 
-
- function Example() {
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -20,6 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
  
 }));
+
+ function Example() {
   const [spacing] = React.useState(8);
   const classes = useStyles();
 

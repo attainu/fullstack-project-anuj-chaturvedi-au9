@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -7,15 +7,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Checkbox from '@material-ui/core/Checkbox';
-import clearSelected from "../../utils/clearSelected";
 
 import CodeIcon from "@material-ui/icons/Code";
 import GetAppRoundedIcon from "@material-ui/icons/GetAppRounded";
 
 import ElementModal from "./ElementModal";
 
-import selected_set from "../../utils/appendSelected";
+import completeScript from "../../utils/completeScript";
 import downloadCode from "../../utils/downloadCode";
 
 const useStyles = makeStyles({
@@ -24,8 +22,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ElementItem = ({ name, img, HTMLCode, CSSCode, JSCode, id, clearCheckBox }) => {
-
+const ElementItem = ({ name, img, HTMLCode, CSSCode, JSCode }) => {
   const classes = useStyles();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -38,36 +35,9 @@ const ElementItem = ({ name, img, HTMLCode, CSSCode, JSCode, id, clearCheckBox }
     setIsOpen(false);
   };
 
-  const download= () => {
-    downloadCode(HTMLCode, CSSCode, JSCode);
-  }
-
-  const [checked, setChecked] = React.useState(false);
-  useEffect(() => {
-      if (checked == true) {
-          selected_set.add(id);
-      }
-  });
-
-  useEffect(() => {
-    setChecked(false)
-    clearSelected()
-  },[clearCheckBox])
-
-  const handleChange = (event) => {
-      setChecked(event.target.checked);
-      var checktest = event.target.checked;
-      if (checktest == true) {
-          selected_set.add(id);
-          console.log(selected_set);
-          console.log(checked + "inside");
-          console.log("hi");
-      } else {
-          console.log("deleting " + id);
-          selected_set.delete(id);
-      }
-      console.log(event.target.checked);
-  };
+ const download= () => {
+  downloadCode(HTMLCode, CSSCode, JSCode);
+ }
 
   return (
     <div style={elementStyle}>
@@ -106,11 +76,6 @@ const ElementItem = ({ name, img, HTMLCode, CSSCode, JSCode, id, clearCheckBox }
           >
             View Code
           </Button>
-          <Checkbox
-            checked={checked}
-            onChange={handleChange}
-            inputProps={{'aria-label': 'secondary checkbox'}}
-          />
         </CardActions>
       </Card>
       <ElementModal

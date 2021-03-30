@@ -7,50 +7,59 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { ListItem } from "@material-ui/core";
+
 import Logo from "../../img/Logo_SVG.svg"
+const useStyles = makeStyles((theme) => ({
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    display: "none",
+    [theme.breakpoints.up("xs")]: {
+      display: "block",
+    },
+  },
+  
+  inputRoot: {
+    color: "inherit",
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 0, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
+    },
+  },
+  sectionDesktop: {
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+    },
+  },
+  sectionMobile: {
+    display: "flex",
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
+}));
 
 function PrimarySearchAppBar() {
-  const useStyles = makeStyles((theme) => ({
-    grow: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      display: "none",
-      [theme.breakpoints.up("xs")]: {
-        display: "block",
-      },
-    },
-    
-    inputRoot: {
-      color: "inherit",
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 0, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: "20ch",
-      },
-    },
-    sectionDesktop: {
-      display: "none",
-      [theme.breakpoints.up("sm")]: {
-        display: "flex",
-      },
-    },
-    sectionMobile: {
-      display: "flex",
-      [theme.breakpoints.up("sm")]: {
-        display: "none",
-      },
-    },
-  }));
-  
   const classes = useStyles();
 
   return (
@@ -67,27 +76,33 @@ function PrimarySearchAppBar() {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <ListItem className="navbar-links">
+              <ListItem>
                 {" "}
                 <Link to='/' style={customStyle}>
                   Home
                 </Link>{" "}
               </ListItem>
-              <ListItem className="navbar-links">
+              <ListItem>
                 <Link to='/team' style={customStyle}>
                   Team
                 </Link>{" "}
               </ListItem>
-              <ListItem className="navbar-links">
+              <ListItem>
                 {" "}
                 <Link to='/elements' style={customStyle}>
                   Elements
                 </Link>{" "}
               </ListItem>
-              <ListItem className="navbar-links">
+              <ListItem>
                 {" "}
                 <Link to='/contribute' style={customStyle}>
                   Contribute
+                </Link>{" "}
+              </ListItem>
+              <ListItem>
+                {" "}
+                <Link to='/logout' style={customStyle}>
+                  LogOut
                 </Link>{" "}
               </ListItem>
 

@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
+
 const elementSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
   },
-  JSCode: String,
-  HTMLCode: String,
-  CSSCode: String,
+  JSCode: "",
+  HTMLCode: "",
+  CSSCode: "",
   screenshot: {
     type: Buffer,
   },

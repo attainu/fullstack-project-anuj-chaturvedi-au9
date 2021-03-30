@@ -1,0 +1,4 @@
+
+var dummy = [{ "_id": "606b2e8f7edcb932542c7624", "name": "q3", "JSCode": "document.body.style.background = \"blue\"\n", "HTMLCode": "<h1>Hello World</h1>\n", "CSSCode": "", "__v": 0 }, { "_id": "606b3129dd39a92f303ac2bd", "name": "q34", "JSCode": "dsd\n", "HTMLCode": "sas\n", "CSSCode": "saa\n", "__v": 0 }, { "_id": "606b324265dc430a7cb4b517", "name": "q35", "JSCode": "//Write your JavaScript here :)fgf\n", "HTMLCode": "Write your HTML here :)gfgf\n", "CSSCode": "Write your CSS here :)fgfg\n", "__v": 0 }, { "_id": "606b343e1d2ecb25c8b63788", "name": "q2345", "JSCode": "", "HTMLCode": "", "CSSCode": "", "__v": 0 }, { "_id": "606b35161d2ecb25c8b63789", "name": "q234", "JSCode": "Hello\t\n", "HTMLCode": "Hello\n", "CSSCode": "Hello\n", "__v": 0 }];
+
+export { dummy };

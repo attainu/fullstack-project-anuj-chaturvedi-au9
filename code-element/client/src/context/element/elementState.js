@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
+import { encode } from 'js-base64';
 
 import ElementContext from "./elementContext";
 import ElementReducer from "./elementReducer";
@@ -47,6 +48,40 @@ const searchElements = (text) => {
     console.error(e);
   }
 }
+
+const uploadElement = async (name, HTMLCode, JSCode, CSSCode, screenshot) => {
+
+  console.log(URL.createObjectURL(createurl(encode(await screenshot.text()))))
+  // console.log(encode(await screenshot.text()));
+  // const string = encode(await screenshot.text());
+  // try {
+    
+  //     await axios({
+  //       method: 'post',
+  //       url: '/api/elements/img',
+  //       data: {
+  //         string
+  //       }
+  //     })
+  // } catch (err) {
+  //   console.log(err);
+  // }
+  try {
+    await axios({
+      method: 'post',
+      url: '/api/elements',
+      data: {
+        name: name,
+        HTMLCode,
+        JSCode,
+        CSSCode,
+        screenshot
+      }
+    });
+  } catch (e) {
+      console.log(e);
+  }
+}
 // Clear elements
 
 // Set Loading
@@ -60,7 +95,8 @@ return (
       loading: state.loading,
       filtered: state.filtered,
       getElements,
-      searchElements
+      searchElements,
+      uploadElement
     }}
   >
     {props.children}
@@ -68,4 +104,18 @@ return (
 );
 }
 
+const createurl = (b64String) => {
+
+  const byteCharacters = atob(b64String);
+
+  const byteNumbers = new Array(byteCharacters.length);
+  for(let i = 0; i < byteCharacters.length; i++){
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+  }
+
+  const byteArray = new Uint8Array(byteNumbers);
+
+  const blob = new Blob([byteArray], {type: 'image/jpg'});
+  return blob;
+}
 export default ElementState;

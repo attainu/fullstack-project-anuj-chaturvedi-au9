@@ -9,52 +9,55 @@ import { ListItem} from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 
-function Footer() {
+const useStyles = makeStyles((theme) => ({
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+    },
+  },
 
-  const useStyles = makeStyles((theme) => ({
-    grow: {
-      flexGrow: 1,
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
     },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
-    },
-  
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-  
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
-    },
-    sectionDesktop: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'flex',
-        
-      },
-    },
-    sectionMobile: {
+  },
+  sectionDesktop: {
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
       display: 'flex',
-      [theme.breakpoints.down('sm')]: {
-        display: 'grid',
-        margin:'auto',
-      },
+      
     },
-  }));
-  
+  },
+  sectionMobile: {
+    display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      display: 'grid',
+      margin:'auto',
+    },
+  },
+}));
+
+function Footer() {
   const classes = useStyles();
+  
+  
+  
+  
 
   return (
     <div className={classes.grow}>
@@ -64,18 +67,18 @@ function Footer() {
           <div className={classes.sectionDesktop}>
           <div className={classes.sectionMobile} >
         <div className="first">
-         <ListItem className="navbar-links"> <Link to='/elements' className="individual">Get Started</Link> </ListItem>
-         <ListItem className="navbar-links"> <Link to='/team' className="individual">About Us</Link> </ListItem>        
+         <ListItem> <Link to='/elements' className="individual">Get Started</Link> </ListItem>
+         <ListItem> <Link to='/team' className="individual">About Us</Link> </ListItem>        
         </div>    
         <div className="second">
-          <div className="social-div navbar-links">
+          <div className="social-div">
             <a href="https://github.com/AasthaGithub/Customizable_Portfolio" className="social"><GitHubIcon></GitHubIcon></a>
           </div>
         </div>
 
         <div className="third">
-          <ListItem className="navbar-links"> <Link to='/elements' className="individual">Work with Us</Link>  </ListItem>
-          <ListItem className="navbar-links"><Link to='/team' className="individual">Connect with Us</Link>  </ListItem> 
+          <ListItem> <Link to='/elements' className="individual">Work with Us</Link>  </ListItem>
+          <ListItem><Link to='/team' className="individual">Connect with Us</Link>  </ListItem> 
         </div>
      </div>
       </div>
